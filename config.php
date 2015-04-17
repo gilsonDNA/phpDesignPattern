@@ -5,7 +5,8 @@ spl_autoload_register(function($className) {
     $path = str_replace('\\', DIRECTORY_SEPARATOR, $className);
     $file = CLASS_DIR . $path . '.php';
 
-    var_dump($file);
+    //var_dump(is_file($file));
+    //die;
 
     if (is_file($file)) {
         require_once($file);
