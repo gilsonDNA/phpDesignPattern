@@ -9,8 +9,9 @@
 namespace src\Elements;
 
 
-interface Elemento {
+interface ElementoContainer {
 
     function render();
+    function addElemento(Elemento $elemento);
 
 } 
