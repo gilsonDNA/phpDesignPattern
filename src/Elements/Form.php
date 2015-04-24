@@ -6,25 +6,28 @@
  * Time: 12:48
  */
 
-namespace src\Elements;
+namespace Elements;
 
 
-class Form implements  Elemento{
+class Form implements  Elemento
+{
 
     private $name;
     private $value;
-    private $arrayElementos;
-    function __construct($name, $value){
-        this->$name = $name;
-        this->$value = $value;
-        this->$arrayElementos = new Array();
+    private $arrayElementos = array();
 
+
+    function __construct($name, $value)
+    {
+        $this->name = $name;
+        $this->value = $value;
     }
 
-    function render(){
+    function render()
+    {
 
-        echo "<form  action='{this->$name}'   >";
-        foreach(this->$arrayElementos  as $elemento){
+        echo "<form  action='{$this->name}'   >";
+        foreach($this->arrayElementos  as $elemento){
             $elemento->render();
             echo "<br />";
         }
@@ -33,9 +36,9 @@ class Form implements  Elemento{
 
     }
 
-    function addElemento(Elemento $elemento){
-
-        this->$arrayElementos[] = $elemento;
+    function addElemento(Elemento $elemento)
+    {
+        $this->arrayElementos[] = $elemento;
     }
 
 

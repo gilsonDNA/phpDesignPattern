@@ -6,22 +6,26 @@
  * Time: 12:28
  */
 
-namespace src\Elements;
+namespace Elements;
 
 
-class InputText implements  Elemento{
+class InputText implements  Elemento
+{
 
     private $name;
     private $value;
-    function __construct($name, $value){
-        this->$name = $name;
-        this->$value = $value;
+
+    function __construct($name, $value)
+    {
+        $this->name = $name;
+        $this->value = $value;
 
     }
 
-    function render(){
+    function render()
+    {
 
-        echo "<input type='text' name='{this->$name}'  value='{this->$value}'  >";
+        echo "<input type='text' name='{$this->name}'  value='{$this->value}'  >";
 
     }
 

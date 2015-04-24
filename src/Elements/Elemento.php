@@ -6,10 +6,11 @@
  * Time: 12:12
  */
 
-namespace src\Elements;
+namespace Elements;
 
 
-interface Elemento {
+interface Elemento
+{
 
     function render();
 

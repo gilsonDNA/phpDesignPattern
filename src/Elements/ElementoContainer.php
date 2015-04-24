@@ -6,10 +6,11 @@
  * Time: 12:12
  */
 
-namespace src\Elements;
+namespace Elements;
 
 
-interface ElementoContainer {
+interface ElementoContainer
+{
 
     function render();
     function addElemento(Elemento $elemento);

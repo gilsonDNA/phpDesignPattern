@@ -6,29 +6,34 @@
  * Time: 13:13
  */
 
-namespace src\Elements;
-
-include ("src/Elements/Elemento.php");
+namespace Elements;
 
 
-class HtmlContent implements Elemento{
+
+class HtmlContent implements Elemento
+{
 
     private $name;
     private $value;
-    private $arrayElementos;
-    function __construct($name, $value){
+    private $arrayElementos = array();
+
+    function __construct($name, $value)
+    {
         $this->name = $name;
         $this->value = $value;
         $this->arrayElementos =  array();
 
     }
 
-    function render(){
+    function render()
+    {
 
+        echo "<!DOCTYPE html>";
         echo "<html>";
-        echo "<head> <title> '{this->value}' </title> </head>";
+        echo "<meta charset='UTF-8>";
+        echo "<head> <title> '{$this->value}' </title> </head>";
         echo "<body>";
-        foreach($this->$arrayElementos  as $elemento){
+        foreach($this->arrayElementos  as $elemento){
             $elemento->render();
             echo "<br />";
         }
@@ -38,7 +43,8 @@ class HtmlContent implements Elemento{
     }
 
 
-    function addElemento(Elemento $elemento){
+    function addElemento(Elemento $elemento)
+    {
 
         $this->arrayElementos[] = $elemento;
     }

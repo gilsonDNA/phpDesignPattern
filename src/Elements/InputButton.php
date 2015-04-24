@@ -6,22 +6,26 @@
  * Time: 12:46
  */
 
-namespace src\Elements;
+namespace Elements;
 
 
-class InputButton implements  Elemento{
+class InputButton implements  Elemento
+{
 
     private $name;
     private $value;
-    function __construct($name, $value){
-        this->$name = $name;
-        this->$value = $value;
+
+    function __construct($name, $value)
+    {
+        $this->name = $name;
+        $this->value = $value;
 
     }
 
-    function render(){
+    function render()
+    {
 
-        echo "<input type='submit' name='{this->$name}'  value='{this->$value}'  >";
+        echo "<input type='submit' name='{$this->name}'  value='{$this->value}'  >";
 
     }
 

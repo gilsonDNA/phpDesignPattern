@@ -3,21 +3,21 @@
  * Created by PhpStorm.
  * User: gilson
  * Date: 17/04/15
- * Time: 12:41
+ * Time: 12:46
  */
 
 namespace Elements;
 
 
-class InputPassword implements  Elemento
+class Paragraph implements  Elemento
 {
 
-    private $name;
+    private $id;
     private $value;
 
-    function __construct($name, $value)
+    function __construct($id, $value)
     {
-        $this->name = $name;
+        $this->id = $id;
         $this->value = $value;
 
     }
@@ -25,7 +25,16 @@ class InputPassword implements  Elemento
     function render()
     {
 
-        echo "<input type='password' name='{$this->name}'  value='{$this->value}'  >";
+        if(empty($this->id))
+        {
+            echo "<p id='{$this->id}' >";
+
+        }else
+        {
+            echo "<p>";
+        }
+
+        echo " '{$this->value}' </p>";
 
     }
 

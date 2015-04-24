@@ -3,30 +3,28 @@
  * Created by PhpStorm.
  * User: gilson
  * Date: 17/04/15
- * Time: 12:41
+ * Time: 12:46
  */
 
 namespace Elements;
 
 
-class InputPassword implements  Elemento
+class Label implements  Elemento
 {
 
-    private $name;
+    private $for;
     private $value;
 
-    function __construct($name, $value)
+    function __construct($for, $value)
     {
-        $this->name = $name;
+        $this->for = $for;
         $this->value = $value;
 
     }
 
     function render()
     {
-
-        echo "<input type='password' name='{$this->name}'  value='{$this->value}'  >";
-
+        echo "<label for='{$this->for}'> {$this->value} </label>";
     }
 
     /**

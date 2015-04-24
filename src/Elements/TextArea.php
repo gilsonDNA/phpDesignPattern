@@ -6,26 +6,31 @@
  * Time: 12:35
  */
 
-namespace src\Elements;
+namespace Elements;
 
 
-class TextArea implements Elemento{
+class TextArea implements Elemento
+{
 
     private $name;
     private $value;
     private $rows;
     private $cols;
-    function __construct($name, $value, $rows, $cols){
-        this->$name = $name;
-        this->$value = $value;
-        this->$rows = $rows;
-        this->$cols = $cols;
+
+
+    function __construct($name, $value, $rows, $cols)
+    {
+        $this->name = $name;
+        $this->value = $value;
+        $this->rows = $rows;
+        $this->cols = $cols;
 
     }
 
-    function render(){
+    function render()
+    {
 
-        echo "<textarea name='{this->$name}'  rows='{this->$rows}'  cols='{this->$rows}'> '{this->$value}' </textarea> ";
+        echo "<textarea name='{$this->name}'  rows='{$this->rows}'  cols='{$this->rows}'> '{$this->value}' </textarea> ";
 
     }
 
