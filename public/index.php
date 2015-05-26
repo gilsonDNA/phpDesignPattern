@@ -5,42 +5,43 @@ require_once __DIR__ . "/../config.php";
 
 use Elements\HtmlContent;
 use Elements\Form;
-use Elements\InputButton;
-use Elements\InputText;
-use Elements\InputPassword;
 use Elements\Head;
-use Elements\Label;
-
-
+use Elements\Fields\Label;
+use Elements\Factory\InputTextFactory;
+use Elements\Factory\InputPasswordFactory;
+use Elements\Factory\InputButtonFactory;
+use Elements\Factory\LabelFactory;
 
 
 $objetoHTML = new HtmlContent("pagina.html","Titulo");
-
-
-
 $objetoH1 = new Head("head1", "School Of Net", "1");
 $objetoH2 = new Head("head2", "Informe os dados abaixo", "2");
 
 $objetoHTML->addElemento($objetoH1);
 
-$objetoForm = new Form("pagina.html", "");
+//injetando Dependencia
+$request = new \Elements\Validation\Request();
+$validator = new \Elements\Validation\Validator($request);
+$objetoForm = new Form("pagina.html", "", $validator);
+
 $objetoHTML->addElemento($objetoForm);
 
 
 
-$objetoInputNome =  new InputText("login", "");
-$objetoInputSenha =  new InputPassword("passwd", "");
-$objetoInputButton =  new InputButton("submit", "submit");
+$factoryInputNome =  new InputTextFactory("login", "");
+$factoryInputSenha =  new InputPasswordFactory("passwd", "");
+$factoryInputButton =  new InputButtonFactory("submit", "submit");
 
-$objetoLabel1 = new Label("nome", "Login");
-$objetoLabel2 = new Label("passwd", "Password");
+$factoryLabel = new LabelFactory("nome", "Login");
+$factoryLabel2 = new LabelFactory("passwd", "Password");
 
 $objetoForm->addElemento($objetoH2);
-$objetoForm->addElemento($objetoLabel1);
-$objetoForm->addElemento($objetoInputNome);
-$objetoForm->addElemento($objetoLabel2);
-$objetoForm->addElemento($objetoInputSenha);
-$objetoForm->addElemento($objetoInputButton);
+$objetoForm->addElemento($factoryLabel->createField());
+$objetoForm->addElemento($factoryInputNome->createField());
+$objetoForm->addElemento($factoryLabel2->createField());
+$objetoForm->addElemento($factoryInputSenha->createField());
+$objetoForm->addElemento($factoryInputButton->createField());
+
 
 $objetoHTML->render();
 

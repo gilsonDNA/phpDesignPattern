@@ -6,8 +6,9 @@
  * Time: 12:46
  */
 
-namespace Elements;
+namespace Elements\Fields;
 
+use Elements\Elemento;
 
 class InputButton implements  Elemento
 {

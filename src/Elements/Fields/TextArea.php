@@ -6,7 +6,9 @@
  * Time: 12:35
  */
 
-namespace Elements;
+namespace Elements\Fields;
+
+use Elements\Elemento;
 
 
 class TextArea implements Elemento

@@ -3,13 +3,15 @@
  * Created by PhpStorm.
  * User: gilson
  * Date: 17/04/15
- * Time: 12:41
+ * Time: 12:28
  */
 
-namespace Elements;
+namespace Elements\Fields;
+
+use Elements\Elemento;
 
 
-class InputPassword implements  Elemento
+class InputText implements  Elemento
 {
 
     private $name;
@@ -25,24 +27,24 @@ class InputPassword implements  Elemento
     function render()
     {
 
-        echo "<input type='password' name='{$this->name}'  value='{$this->value}'  >";
+        echo "<input type='text' name='{$this->name}'  value='{$this->value}'  >";
 
     }
 
     /**
      * @return mixed
      */
-    public function getName()
+    public function getValue()
     {
-        return $this->name;
+        return $this->value;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $value
      */
-    public function setName($name)
+    public function setValue($value)
     {
-        $this->name = $name;
+        $this->value = $value;
     }
 
 

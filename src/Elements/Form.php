@@ -9,18 +9,22 @@
 namespace Elements;
 
 
+use Elements\Validation\Validator;
+
 class Form implements  Elemento
 {
 
     private $name;
     private $value;
     private $arrayElementos = array();
+    protected $validator;
 
 
-    function __construct($name, $value)
+    function __construct($name, $value, Validator $validator)
     {
         $this->name = $name;
         $this->value = $value;
+        $this->validator = $validator;
     }
 
     function render()
