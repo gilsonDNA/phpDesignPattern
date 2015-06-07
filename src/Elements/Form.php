@@ -9,9 +9,14 @@
 namespace Elements;
 
 
+use Elements\Factory\AbstractElementFactory;
+use Elements\Fields\InputButton;
+use Elements\Fields\InputPassword;
 use Elements\Validation\Validator;
+use Elements\Fields\InputText;
+use Elements\Fields\Label;
 
-class Form implements  Elemento
+class Form extends AbstractElementFactory implements  Elemento
 {
 
     private $name;
@@ -25,6 +30,32 @@ class Form implements  Elemento
         $this->name = $name;
         $this->value = $value;
         $this->validator = $validator;
+    }
+
+    function createField($tipo, $array){
+
+        if($tipo == 'input' && isset($array['type']))
+        {
+            if($array['type'] == 'text'){
+                return new InputText();
+            }
+
+            if($array['type'] == 'password'){
+                return new InputPassword();
+            }
+
+            if($array['type'] == 'button'){
+                return new InputButton();
+            }
+
+
+        }
+
+        if($tipo == 'label' ){
+            return  new Label();
+
+        }
+
     }
 
     function render()

@@ -17,12 +17,6 @@ class InputText implements  Elemento
     private $name;
     private $value;
 
-    function __construct($name, $value)
-    {
-        $this->name = $name;
-        $this->value = $value;
-
-    }
 
     function render()
     {
@@ -46,6 +40,24 @@ class InputText implements  Elemento
     {
         $this->value = $value;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+
 
 
 } 

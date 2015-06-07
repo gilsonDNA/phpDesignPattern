@@ -17,12 +17,7 @@ class Label implements  Elemento
     private $for;
     private $value;
 
-    function __construct($for, $value)
-    {
-        $this->for = $for;
-        $this->value = $value;
 
-    }
 
     function render()
     {
@@ -44,6 +39,42 @@ class Label implements  Elemento
     {
         $this->name = $name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFor()
+    {
+        return $this->for;
+    }
+
+    /**
+     * @param mixed $for
+     */
+    public function setFor($for)
+    {
+        $this->for = $for;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+
+
+
 
 
 } 

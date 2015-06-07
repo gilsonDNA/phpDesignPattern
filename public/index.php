@@ -6,11 +6,7 @@ require_once __DIR__ . "/../config.php";
 use Elements\HtmlContent;
 use Elements\Form;
 use Elements\Head;
-use Elements\Fields\Label;
-use Elements\Factory\InputTextFactory;
-use Elements\Factory\InputPasswordFactory;
-use Elements\Factory\InputButtonFactory;
-use Elements\Factory\LabelFactory;
+
 
 
 $objetoHTML = new HtmlContent("pagina.html","Titulo");
@@ -28,19 +24,36 @@ $objetoHTML->addElemento($objetoForm);
 
 
 
-$factoryInputNome =  new InputTextFactory("login", "");
-$factoryInputSenha =  new InputPasswordFactory("passwd", "");
-$factoryInputButton =  new InputButtonFactory("submit", "submit");
+$inputNome =  $objetoForm->createField("input" , array('type' => 'text') ) ;
+$inputNome->setName("login");
 
-$factoryLabel = new LabelFactory("nome", "Login");
-$factoryLabel2 = new LabelFactory("passwd", "Password");
+
+$inputSenha =  $objetoForm->createField("input" , array('type' => 'password') ) ;
+$inputSenha->setName("passwd");
+
+
+$inputButton = $objetoForm->createField("input" , array('type' => 'button') ) ;
+$inputButton->setName("submit");
+$inputButton->setValue("submit");
+
+
+
+$label = $objetoForm->createField("label" , null ) ;
+$label->setFor("nome");
+$label->setValue("Login");
+
+
+$label2 = $objetoForm->createField("label" , null ) ;
+$label2->setFor("passwd");
+$label2->setValue("Password");
+
 
 $objetoForm->addElemento($objetoH2);
-$objetoForm->addElemento($factoryLabel->createField());
-$objetoForm->addElemento($factoryInputNome->createField());
-$objetoForm->addElemento($factoryLabel2->createField());
-$objetoForm->addElemento($factoryInputSenha->createField());
-$objetoForm->addElemento($factoryInputButton->createField());
+$objetoForm->addElemento($label);
+$objetoForm->addElemento($inputNome);
+$objetoForm->addElemento($label2);
+$objetoForm->addElemento($inputSenha);
+$objetoForm->addElemento($inputButton);
 
 
 $objetoHTML->render();

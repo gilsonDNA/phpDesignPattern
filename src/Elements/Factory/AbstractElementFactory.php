@@ -10,10 +10,10 @@ namespace Elements\Factory;
 abstract class AbstractElementFactory
 {
 
-    abstract protected function createField();
+    abstract function createField($tipo, $array);
 
     function getField(){
-        return $this->createField();
+        return $this->createField($tipo, $array);
     }
 
 
