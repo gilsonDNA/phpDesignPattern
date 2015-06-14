@@ -16,21 +16,14 @@ use Elements\Validation\Validator;
 use Elements\Fields\InputText;
 use Elements\Fields\Label;
 
-class Form extends AbstractElementFactory implements  Elemento
+class FieldSets extends AbstractElementFactory implements  Elemento
 {
 
-    private $name;
+
     private $value;
     private $arrayElementos = array();
-    protected $validator;
 
 
-    function __construct($name, $value, Validator $validator)
-    {
-        $this->name = $name;
-        $this->value = $value;
-        $this->validator = $validator;
-    }
 
     function createField($tipo, $array){
 
@@ -51,11 +44,6 @@ class Form extends AbstractElementFactory implements  Elemento
 
         }
 
-        if($tipo == 'fieldset' ){
-            return  new FieldSets();
-
-        }
-
         if($tipo == 'label' ){
             return  new Label();
 
@@ -66,13 +54,14 @@ class Form extends AbstractElementFactory implements  Elemento
     function render()
     {
 
-        echo "<form  action='{$this->name}'   >";
+        echo "<fieldset> ";
+        echo "<legend> {$this->value} </legend>";
         foreach($this->arrayElementos  as $elemento){
             $elemento->render();
             echo "<br />";
         }
 
-        echo "</form>";
+        echo "</fieldset>";
 
     }
 
@@ -98,6 +87,24 @@ class Form extends AbstractElementFactory implements  Elemento
     {
         $this->arrayElementos = $arrayElementos;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+
 
 
 } 

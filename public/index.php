@@ -48,12 +48,18 @@ $label2->setFor("passwd");
 $label2->setValue("Password");
 
 
-$objetoForm->addElemento($objetoH2);
-$objetoForm->addElemento($label);
-$objetoForm->addElemento($inputNome);
-$objetoForm->addElemento($label2);
-$objetoForm->addElemento($inputSenha);
-$objetoForm->addElemento($inputButton);
+$fieldSet = $objetoForm->createField("fieldset" , null) ;
+$fieldSet->setValue("Login:");
+
+$fieldSet->addElemento($objetoH2);
+$fieldSet->addElemento($label);
+$fieldSet->addElemento($inputNome);
+$fieldSet->addElemento($label2);
+$fieldSet->addElemento($inputSenha);
+$fieldSet->addElemento($inputButton);
+
+
+$objetoForm->addElemento($fieldSet);
 
 
 $objetoHTML->render();
