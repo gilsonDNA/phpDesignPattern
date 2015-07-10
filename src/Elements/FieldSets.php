@@ -54,6 +54,9 @@ class FieldSets extends AbstractElementFactory implements  Elemento
     function render()
     {
 
+        if($this->arrayElementos == null or count($this->arrayElementos) == 0){
+            throw new  \InvalidArgumentException("O arrayElemntos não pode estar vazio!");
+        }
         echo "<fieldset> ";
         echo "<legend> {$this->value} </legend>";
         foreach($this->arrayElementos  as $elemento){

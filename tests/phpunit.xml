@@ -10,7 +10,7 @@
          stopOnFailure="false"
          syntaxCheck="false"
          verbose="true">
-    <testsuite name="DesignPattern Test">
+    <testsuite name="Elements Test">
         <directory>.</directory>
     </testsuite>
 </phpUnit>
