@@ -7,6 +7,22 @@ use Elements\HtmlContent;
 use Elements\Form;
 use Elements\Head;
 
+//phpinfo();
+
+
+try{
+    $db = new SQLiteDatabase("produtos.db", 0666);
+}catch( Exception $exception ){
+    die($exception->getMessage());
+}
+
+
+$sqlC = "CREATE TABLE colunistas(id INTEGER PRIMARY KEY, nome TEXT)";
+$db->queryExec($sqlC);
+
+
+
+
 
 
 $objetoHTML = new HtmlContent("pagina.html","Titulo");
@@ -23,13 +39,32 @@ $objetoForm = new Form("pagina.html", "", $validator);
 $objetoHTML->addElemento($objetoForm);
 
 
-
+/* Inicio Criação de campos  */
 $inputNome =  $objetoForm->createField("input" , array('type' => 'text') ) ;
-$inputNome->setName("login");
+$inputNome->setName("nome");
+
+$inputValor =  $objetoForm->createField("input" , array('type' => 'text') ) ;
+$inputValor->setName("valor");
+
+$inputDescricao =  $objetoForm->createField("input" , array('type' => 'text') ) ;
+$inputDescricao->setName("descricao");
 
 
-$inputSenha =  $objetoForm->createField("input" , array('type' => 'password') ) ;
-$inputSenha->setName("passwd");
+$labelNome = $objetoForm->createField("label" , null ) ;
+$labelNome->setFor("nome");
+$labelNome->setValue("Nome");
+
+
+$labelValor = $objetoForm->createField("label" , null ) ;
+$labelValor->setFor("valor");
+$labelValor->setValue("Valor");
+
+$labelDescricao = $objetoForm->createField("label" , null ) ;
+$labelDescricao->setFor("descricao");
+$labelDescricao->setValue("Descrição");
+
+/* final Criação de campos  */
+
 
 
 $inputButton = $objetoForm->createField("input" , array('type' => 'button') ) ;
@@ -37,25 +72,17 @@ $inputButton->setName("submit");
 $inputButton->setValue("submit");
 
 
-
-$label = $objetoForm->createField("label" , null ) ;
-$label->setFor("nome");
-$label->setValue("Login");
-
-
-$label2 = $objetoForm->createField("label" , null ) ;
-$label2->setFor("passwd");
-$label2->setValue("Password");
-
-
 $fieldSet = $objetoForm->createField("fieldset" , null) ;
-$fieldSet->setValue("Login:");
+$fieldSet->setValue("Cadastro de Produtos:");
 
 $fieldSet->addElemento($objetoH2);
-$fieldSet->addElemento($label);
+$fieldSet->addElemento($labelNome);
 $fieldSet->addElemento($inputNome);
-$fieldSet->addElemento($label2);
-$fieldSet->addElemento($inputSenha);
+$fieldSet->addElemento($labelValor);
+$fieldSet->addElemento($inputValor);
+$fieldSet->addElemento($labelDescricao);
+$fieldSet->addElemento($inputDescricao);
+
 $fieldSet->addElemento($inputButton);
 
 

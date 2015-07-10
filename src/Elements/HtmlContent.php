@@ -30,7 +30,7 @@ class HtmlContent implements Elemento
 
         echo "<!DOCTYPE html>";
         echo "<html>";
-        echo "<meta charset='UTF-8>";
+        echo "<meta charset='UTF-8'>";
         echo "<head> <title> '{$this->value}' </title> </head>";
         echo "<body>";
         foreach($this->arrayElementos  as $elemento){

@@ -1,0 +1,16 @@
+<phpUnit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap.php"
+         cacheTokes="true"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         verbose="true">
+    <testsuite name="DesignPattern Test">
+        <directory>.</directory>
+    </testsuite>
+</phpUnit>
